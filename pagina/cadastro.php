@@ -1,5 +1,5 @@
 <?php
-  session_start()
+  session_start();
 ?>
 
 <!DOCTYPE html>
@@ -32,11 +32,11 @@
 
         <div>
             <?php if(isset($_SESSION['usuario'])) { ?>
-                <form action="logout.php">
+                <form action="../login/logout.php">
                     <input type="submit" value="<?php echo $_SESSION['usuario']; ?> - Sair" />
                 </form>
             <?php } else { ?>
-                <form action="login.php">
+                <form action="../login/login.php">
                     <input type="submit" value="Entrar" />
                 </form>
             <?php } ?>
@@ -59,6 +59,29 @@
                     <div>
                         <label for="txtAno">Preço:</label>
                         <input type="text" id="txtPreco" name="txtPreco" placeholder="Preço" />
+                    </div>
+                    <div>
+                        <label for="txtDescricao">Descrição:</label>
+                        <input type="text" id="txtDescricao" name="txtDescricao" placeholder="Descrição" />
+                    </div>
+                    <div>
+                        <label for="fileFoto">Selecione a foto:</label>
+                        <?php   
+                            if(isset($_FILES['fileFoto'])){
+                                $arquivo = $_FILES['fileFoto'];
+
+                                if($arquivo['error'])
+                                    die("Falha ao enviar o arquivo");
+                                    exit;
+
+                                if($arquivo['size'] <= 2097152)
+                                    die("Arquivo muito grande!! Maximo 2MB");
+                                    exit;
+                        ?>
+                            <input type="file" id="fileFoto" name="fileFoto" />
+                        <?php } else { ?>
+                            <input type="file" id="fileFoto" name="fileFoto" />
+                        <?php } ?>
                     </div>
                     <div>
                         <button type="submit">Cadastrar</button>

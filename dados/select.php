@@ -1,14 +1,24 @@
 <?php
-    require("conecta.php");
+    //require("conecta.php");
+    define("servidor", "127.0.0.1");
+    define("usuario", "root");
+    define("senha", "");
+    define("banco", "carro");
+
+    $conexao = mysqli_connect(servidor,usuario,senha,banco);
+
     $sqlSelect = "SELECT * FROM tb_carro";
-    $respostas = msqli_query($conexao, $sqlSelect);
+    $respostas = mysqli_query($conexao, $sqlSelect);
 ?>
-<table>
+<table border="1" cellpadding="10">
     <thead>
         <tr>
+            <th>Id</th>
             <th>Nome</th>
             <th>Ano</th>
             <th>Preço</th>
+            <th>Descrição</th>
+            <th>Foto</th>
             <th>Ação</th>
         </tr>
     </thead>
@@ -19,9 +29,11 @@
                 <td><?php echo $linha['nome_cr']?></td>
                 <td><?php echo $linha['ano_cr']?></td>
                 <td><?php echo $linha['preco_cr']?></td>
+                <td><?php echo $linha['descricaoCarro_cr']?></td>
+                <td><img height="50" src="<?php echo $linha['caminhoFoto_cr']?>" alt=""></td>
                 <td>
                     <div>
-                        <form action="delete.php" method="post" id="excluir">
+                        <form action="../dados/delete.php" method="post" id="excluir">
                             <input type="hidden" name="id_hidden" value="<?php echo $linha['id_cr']?>" />
                             <button type="submit" class="btn btn-outline-light text-dark">
                                 <i class="fa fa-trash" aria-hidden="true"></i>

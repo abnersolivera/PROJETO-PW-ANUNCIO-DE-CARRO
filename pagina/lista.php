@@ -1,5 +1,5 @@
 <?php
-  session_start()
+  session_start();
 ?>
 
 <!DOCTYPE html>
@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Projeto PW - Login</title>
 </head>
 <body>
@@ -32,11 +32,11 @@
 
         <div>
             <?php if(isset($_SESSION['usuario'])) { ?>
-                <form action="logout.php">
+                <form action="../login/logout.php">
                     <input type="submit" value="<?php echo $_SESSION['usuario']; ?> - Sair" />
                 </form>
             <?php } else { ?>
-                <form action="login.php">
+                <form action="../login/login.php">
                     <input type="submit" value="Entrar" />
                 </form>
             <?php } ?>
@@ -47,7 +47,7 @@
         <div>
             <div>
                 <h1>Lista de Carros</h1>
-                <?php require("select.php")?>
+                <?php require("../dados/select.php")?>
             </div>            
         </div>
     </div>
