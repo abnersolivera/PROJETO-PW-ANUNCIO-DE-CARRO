@@ -1,11 +1,5 @@
 <?php
-    //require("conecta.php");
-    define("servidor", "127.0.0.1");
-    define("usuario", "root");
-    define("senha", "");
-    define("banco", "carro");
-
-    $conexao = mysqli_connect(servidor,usuario,senha,banco);
+    require("conecta.php");
 
     $sqlSelect = "SELECT * FROM tb_carro";
     $respostas = mysqli_query($conexao, $sqlSelect);
@@ -33,6 +27,13 @@
                 <td><img height="50" src="<?php echo $linha['caminhoFoto_cr']?>" alt=""></td>
                 <td>
                     <div>
+                        <form action="../pagina/editarDados.php" method="post">
+                            <input type="hidden" name="id_hidden" value="<?php echo $linha['id_cr']?>"/>
+                            <button type="submit" class="btn btn-outline-light text-dark">
+                                <i class="fa fa-pencil"></i>
+                            </button> 
+                        </form>
+
                         <form action="../dados/delete.php" method="post" id="excluir">
                             <input type="hidden" name="id_hidden" value="<?php echo $linha['id_cr']?>" />
                             <button type="submit" class="btn btn-outline-light text-dark">

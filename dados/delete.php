@@ -1,11 +1,7 @@
 <?php
-    //require("conecta.php");
-    define("servidor", "127.0.0.1");
-    define("usuario", "root");
-    define("senha", "");
-    define("banco", "carro");
+    require("conecta.php");
 
-    $conexao = mysqli_connect(servidor,usuario,senha,banco);
+
 
     
     if(isset($_POST['id_hidden']))

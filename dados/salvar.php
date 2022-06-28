@@ -1,11 +1,5 @@
 <?php
-    //require("conecta.php");
-    define("servidor", "127.0.0.1");
-    define("usuario", "root");
-    define("senha", "");
-    define("banco", "carro");
-
-    $conexao = mysqli_connect(servidor,usuario,senha,banco);
+    require("conecta.php");
 
     extract($_POST);    
     $fileFoto = $_FILES['fileFoto'];
@@ -28,19 +22,17 @@
         die("Tipo de arquivo não aceito!!");
         //Movendo a foto para a pasta de destino
     }
-    
+
     $movendoFoto = move_uploaded_file($fileFoto['tmp_name'], $caminho);
 
-
     $sqlInsert = "INSERT INTO tb_carro(nome_cr, ano_cr, preco_cr, descricaoCarro_cr, fotoNome_cr, caminhoFoto_cr)VALUES('$txtNome','$txtAno', '$txtPreco','$txtDescricao','$nomeDaFoto','$caminho')";
-        
-    $resposta = mysqli_query($conexao,$sqlInsert);
 
-    if($resposta){
-        mysqli_close($conexao);
-        header("Location: ../pagina/lista.php");     
-    }
-    else{
-        echo mysqli_connect_error();
-        
-    }
+        $resposta = mysqli_query($conexao,$sqlInsert);
+
+        if($resposta){
+            mysqli_close($conexao);
+            header("Location: ../pagina/lista.php");
+        }
+        else{
+            echo mysqli_connect_error();
+        }

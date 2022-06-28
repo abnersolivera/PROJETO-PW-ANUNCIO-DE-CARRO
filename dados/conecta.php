@@ -7,6 +7,7 @@ define("banco", "carro");
 
 $conexao = mysqli_connect(servidor,usuario,senha,banco);
 
-if(!$conexao)
+if(!$conexao){
     echo "Não Conectou !!!".mysqli_error();
     exit();
+}
