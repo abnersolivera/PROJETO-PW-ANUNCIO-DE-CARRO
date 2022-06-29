@@ -22,16 +22,16 @@
                     <p class="card-text text-secondary"><?php echo $linha['ano_cr'] ?></p>
                 </div>
                 <div>
-                    <div style="display: flex; Justify-content-between">
+                    <div style="width: 100%; display: flex; Justify-content: space-between">
                         <div>
                             <form action="../pagina/editarDados.php" method="post">
                                 <input type="hidden" name="id_hidden" value="<?php echo $linha['id_cr'] ?>" />
                                 <?php if (isset($_SESSION['usuario'])) { ?>
-                                    <button type="submit" class="btn btn-outline-light text-dark">
+                                    <button type="submit" class="btn btn-outline-success text-dark">
                                         <i class="fa fa-pencil" aria-hidden="true"></i>
                                     </button>
                                 <?php } else { ?>
-                                    <button type="submit" class="btn btn-outline-light text-dark disabled">
+                                    <button type="submit" class="btn btn-outline-success text-dark disabled">
                                         <i class="fa fa-pencil disabled" aria-hidden="true"></i>
                                     </button>
                                 <?php } ?>
@@ -42,11 +42,11 @@
                             <form action="../dados/delete.php" method="post" id="excluir">
                                 <input type="hidden" name="id_hidden" value="<?php echo $linha['id_cr'] ?>" />
                                 <?php if (isset($_SESSION['usuario'])) { ?>
-                                    <button type="submit" class="btn btn-outline-light text-dark">
+                                    <button type="submit" class="btn btn-outline-danger text-dark">
                                         <i class="fa fa-trash" aria-hidden="true"></i>
                                     </button>
                                 <?php } else { ?>
-                                    <button type="submit" class="btn btn-outline-light text-dark disabled">
+                                    <button type="submit" class="btn btn-outline-danger text-dark disabled">
                                         <i class="fa fa-trash disabled" aria-hidden="true"></i>
                                     </button>
                                 <?php } ?>

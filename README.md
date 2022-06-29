@@ -3,6 +3,7 @@
 ## Deselvovido em equipe
 
 back end - [Abner](https://github.com/abnersolivera)
+
 front end [Allefy](https://github.com/aleffyspfor)
 
 ### Tecnologia utilizada para o desenvolvimento back end
