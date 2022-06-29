@@ -22,6 +22,18 @@
         die("Tipo de arquivo não aceito!!");
         //Movendo a foto para a pasta de destino
     }
+    
+    $movendoFoto = move_uploaded_file($fileFoto['tmp_name'], $caminho);
+
+
+    $sqlInsert = "INSERT INTO tb_carro(nome_cr, ano_cr, preco_cr, descricaoCarro_cr, fotoNome_cr, caminhoFoto_cr)VALUES('$txtNome','$txtAno', '$txtPreco','$txtDescricao','$nomeDaFoto','$caminho')";
+        
+    $resposta = mysqli_query($conexao,$sqlInsert);
+
+    if($resposta){
+        mysqli_close($conexao);
+        header("Location: ../pagina/lista.php");
+    }
 
     $movendoFoto = move_uploaded_file($fileFoto['tmp_name'], $caminho);
 
